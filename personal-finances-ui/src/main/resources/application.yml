@@ -1,0 +1,13 @@
+server.port: 9000
+security:
+ user:
+  password: changeme
+zuul:
+ routes:
+  resource:
+   path: /personal.finances.service/**
+   url: http://localhost:9001
+spring:
+ redis:
+  host: 192.168.59.103
+  port: 49153

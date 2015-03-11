@@ -1,0 +1,28 @@
+<div ng-show="authenticated">
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			<form ng-submit="loadEntries()">
+				<journal-filter model="filter"></journal-filter>
+			</form>
+		</div>
+	</div>
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Category</th>
+				<th>Amount</th>
+				<th>Date</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="entry in entries">
+				<td>{{entry.category.name}}</td>
+				<td>{{entry.value}}</td>
+				<td>{{entry.date.month}}/{{entry.date.day}}/{{entry.date.year}}</td>
+				<td><a href="" ng-click="deleteEntry(entry.id)">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
