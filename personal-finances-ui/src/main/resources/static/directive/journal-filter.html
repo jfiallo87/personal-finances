@@ -1,0 +1,68 @@
+<div class="row col-xs-12">
+	<div class="form-group col-xs-8 col-md-10">
+		<select id="selectedFilter" class="form-control" ng-model="model.selectedFilter">
+			<option ng-repeat="filter in model.filters">{{filter}}</option>
+		</select>
+	</div>
+	<div class="form-group col-xs-4 col-md-2">
+		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Search</button>
+	</div>
+</div>
+<div ng-show="model.selectedFilter == 'Custom'" class="animated-ng-show">
+	<fieldset class="row col-xs-12">
+		<legend>From:</legend>
+		<div class="form-group col-md-2">
+			<select id="fromType" class="form-control" ng-model="model.availableFilters[model.selectedFilter].fromType">
+				<option ng-repeat="type in model.types">{{type}}</option>
+			</select>
+		</div>
+		<div class="form-group col-md-2">
+			<input type="number" id="fromValue" class="form-control" ng-model="model.availableFilters[model.selectedFilter].fromValue" min="0" max="1000000" step="any"></input>
+		</div>
+		<div class="form-group col-md-2">
+			<select id="fromMonth" class="form-control" ng-model="model.availableFilters[model.selectedFilter].fromMonth">
+				<option ng-repeat="month in model.months">{{month}}</option>
+			</select>
+		</div>
+		<div class="form-group col-md-1">
+			<select id="fromDay" class="form-control" ng-model="model.availableFilters[model.selectedFilter].fromDay">
+				<option ng-repeat="day in model.days">{{day}}</option>
+			</select>
+		</div>
+		<div class="form-group col-md-2">
+			<select id="fromYear" class="form-control" ng-model="model.availableFilters[model.selectedFilter].fromYear">
+				<option ng-repeat="year in model.years">{{year}}</option>
+			</select>
+		</div>
+	</fieldset>
+	<fieldset class="row col-xs-12">
+		<legend>To:</legend>
+		<div class="form-group col-md-2">
+			<select id="toType" class="form-control" ng-model="model.availableFilters[model.selectedFilter].toType">
+				<option ng-repeat="type in model.types">{{type}}</option>
+			</select>
+		</div>
+		<div class="form-group col-md-2">
+			<input type="number" id="toValue" class="form-control" ng-model="model.availableFilters[model.selectedFilter].toValue" min="0" max="1000000" step="any"></input>
+		</div>
+		<div class="form-group col-md-2">
+			<select id="toMonth" class="form-control" ng-model="model.availableFilters[model.selectedFilter].toMonth">
+				<option ng-repeat="month in model.months">{{month}}</option>
+			</select>
+		</div>
+		<div class="form-group col-md-1">
+			<select id="toDay" class="form-control" ng-model="model.availableFilters[model.selectedFilter].toDay">
+				<option ng-repeat="day in model.days">{{day}}</option>
+			</select>
+		</div>
+		<div class="form-group col-md-2">
+			<select id="toYear" class="form-control" ng-model="model.availableFilters[model.selectedFilter].toYear">
+				<option ng-repeat="year in model.years">{{year}}</option>
+			</select>
+		</div>
+	</fieldset>
+	<fieldset class="row col-xs-12">
+		<legend>Categories:</legend>
+		<tags-input ng-model="model.availableFilters[model.selectedFilter].categories" displayProperty="name"></tags-input>
+	</fieldset>
+</div>

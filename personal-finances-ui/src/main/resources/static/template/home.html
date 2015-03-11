@@ -1,0 +1,33 @@
+<div ng-show="authenticated">
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			<form ng-submit="loadSummary()">
+				<journal-filter model="filter"></journal-filter>
+			</form>
+		</div>
+	</div>
+
+	<ul class="list-group">
+		<li class="list-group-item"><span class="badge">{{summary.totals.credits}}</span>
+			<span class="text-success">Credits</span></li>
+		<li class="list-group-item"><span class="badge">{{summary.totals.debits}}</span>
+			<span class="text-danger">Debits</span></li>
+		<li class="list-group-item"><span class="badge">{{summary.totals.balance}}</span>
+			<span class="text-info">Balance</span></li>
+	</ul>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Category</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="categorizedAmount in summary.categorizedAmounts">
+				<td>{{categorizedAmount.category.name}}</td>
+				<td>{{categorizedAmount.value}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

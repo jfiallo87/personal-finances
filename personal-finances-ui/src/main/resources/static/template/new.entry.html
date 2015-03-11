@@ -1,0 +1,47 @@
+<div ng-show="authenticated">
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			<form ng-submit="createEntry()">
+				<fieldset class="row col-xs-12">
+					<legend>Date:</legend>
+					<div class="form-group col-md-2">
+						<select id="month" class="form-control" ng-model="entry.date.month">
+							<option ng-repeat="month in months">{{month}}</option>
+						</select>
+					</div>
+					<div class="form-group col-md-1">
+						<select id="day" class="form-control" ng-model="entry.date.day">
+							<option ng-repeat="day in days">{{day}}</option>
+						</select>
+					</div>
+					<div class="form-group col-md-2">
+						<select id="year" class="form-control" ng-model="entry.date.year">
+							<option ng-repeat="year in years">{{year}}</option>
+						</select>
+					</div>
+				</fieldset>
+				<fieldset class="row col-xs-12">
+					<legend>Amount:</legend>
+					<div class="form-group col-md-2">
+						<select id="type" class="form-control" ng-model="entry.type">
+							<option ng-repeat="type in types">{{type}}</option>
+						</select>
+					</div>
+					<div class="form-group col-md-2">
+						<input type="number" id="value" class="form-control" ng-model="entry.value" min="0" max="1000000" step="any"></input>
+					</div>
+				</fieldset>
+				<fieldset class="row col-xs-12">
+					<legend>Category:</legend>
+					<div class="form-group col-md-5">
+						<input type="text" id="category" class="form-control" ng-model="entry.category.name"></input>
+					</div>
+				</fieldset>
+				<div align="center">
+					<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+					<button type="button" class="btn btn-default btn-lg" ng-click="resetEntry()">Reset</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
