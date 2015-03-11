@@ -1,0 +1,12 @@
+server.port: 9001
+security:
+ sessions: NEVER
+spring:
+ datasource:
+  continueOnError: true
+  url: jdbc:mysql://localhost/test_db
+  username: root
+  password: changeme
+ redis:
+  host: 192.168.59.103
+  port: 49153
