@@ -1,12 +1,12 @@
-package com.finances.personal.core;
+package com.finances.personal.core.model;
 
 import java.util.List;
 
+import com.finances.personal.filter.model.JournalEntryFilter;
 import com.finances.personal.model.CategorizedMonetaryAmount;
-import com.finances.personal.model.JournalEntryFilter;
 import com.finances.personal.model.JournalEntryIdentifiableInfo;
 
-public interface JournalRepository {
+public interface JournalKeeper {
 	
 	void insertEntry(JournalEntryIdentifiableInfo journalEntry, String createdBy);
 	

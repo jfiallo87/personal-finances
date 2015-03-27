@@ -10,8 +10,9 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.NumberUtils;
 import org.springframework.util.StringUtils;
 
+import com.finances.personal.filter.model.JournalEntryFilter;
+import com.finances.personal.jdbc.model.JdbcQuery;
 import com.finances.personal.model.Category;
-import com.finances.personal.model.JournalEntryFilter;
 import com.finances.personal.model.MonetaryAmount;
 import com.finances.personal.model.MonetaryAmountType;
 

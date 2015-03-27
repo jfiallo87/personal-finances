@@ -1,4 +1,4 @@
-package com.finances.personal.jdbc;
+package com.finances.personal.jdbc.model;
 
 import java.util.Date;
 import java.util.List;
@@ -8,13 +8,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.finances.personal.core.JournalRepository;
+import com.finances.personal.core.model.JournalKeeper;
+import com.finances.personal.filter.model.JournalEntryFilter;
+import com.finances.personal.jdbc.JournalEntryQueryBuilder;
+import com.finances.personal.jdbc.SummarizedJournalEntryQueryBuilder;
 import com.finances.personal.model.CategorizedMonetaryAmount;
-import com.finances.personal.model.JournalEntryFilter;
 import com.finances.personal.model.JournalEntryIdentifiableInfo;
 
 @Repository
-public class JournalJdbcRepository implements JournalRepository {
+public class JdbcJournalKeeper implements JournalKeeper {
 	
 	private final JdbcTemplate jdbcTemplate;
 	private final JournalEntryQueryBuilder journalEntryQueryBuilder;
@@ -23,7 +25,7 @@ public class JournalJdbcRepository implements JournalRepository {
 	private final RowMapper<CategorizedMonetaryAmount> summarizedJournalEntryRowMapper;
 	
 	@Autowired
-	public JournalJdbcRepository(JdbcTemplate jdbcTemplate,
+	public JdbcJournalKeeper(JdbcTemplate jdbcTemplate,
 								 JournalEntryQueryBuilder journalEntryQueryBuilder,
 								 SummarizedJournalEntryQueryBuilder summarizedJournalEntryQueryBuilder,
 								 RowMapper<JournalEntryIdentifiableInfo> journalEntryIdentifiableInfoRowMapper,

@@ -3,7 +3,7 @@ package com.finances.personal.model;
 import java.util.Collections;
 import java.util.List;
 
-import com.finances.personal.core.ValueObject;
+import com.finances.personal.core.model.ValueObject;
 
 public class CategorizedSummary extends ValueObject {
 	

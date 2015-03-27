@@ -1,6 +1,6 @@
-package com.finances.personal.jdbc;
+package com.finances.personal.jdbc.model;
 
-import com.finances.personal.core.ValueObject;
+import com.finances.personal.core.model.ValueObject;
 
 public class JdbcQuery extends ValueObject {
 	

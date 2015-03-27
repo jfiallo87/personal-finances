@@ -1,4 +1,4 @@
-package com.finances.personal.util;
+package com.finances.personal.core;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

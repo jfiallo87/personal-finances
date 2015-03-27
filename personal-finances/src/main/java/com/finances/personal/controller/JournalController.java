@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.finances.personal.application.Journal;
-import com.finances.personal.application.JournalEntryFilterBuilder;
-import com.finances.personal.model.JournalEntryFilter;
+import com.finances.personal.application.model.Journal;
+import com.finances.personal.application.model.JournalEntryFilterBuilder;
+import com.finances.personal.filter.model.JournalEntryFilter;
 import com.finances.personal.model.JournalEntryIdentifiableInfo;
 import com.finances.personal.model.JournalEntryInfo;
 import com.finances.personal.model.MonetaryAmountType;

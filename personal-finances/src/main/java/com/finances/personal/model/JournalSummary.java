@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.util.CollectionUtils;
 
-import com.finances.personal.util.FloatUtils;
+import com.finances.personal.core.FloatUtils;
 
 public class JournalSummary {
 	

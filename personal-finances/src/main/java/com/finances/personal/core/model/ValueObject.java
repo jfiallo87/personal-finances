@@ -1,10 +1,10 @@
-package com.finances.personal.core;
+package com.finances.personal.core.model;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import com.finances.personal.model.FieldErrorMessage;
-import com.finances.personal.util.ErrorUtils;
+import com.finances.personal.error.ErrorUtils;
+import com.finances.personal.error.model.FieldErrorMessage;
 
 public abstract class ValueObject {
 	

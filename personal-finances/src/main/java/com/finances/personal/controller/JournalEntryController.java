@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.finances.personal.application.Journal;
+import com.finances.personal.application.model.Journal;
 
 @RestController
 @RequestMapping(value="/journal/{id}")

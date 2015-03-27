@@ -6,7 +6,8 @@ import org.apache.commons.lang3.Range;
 import org.springframework.util.NumberUtils;
 import org.springframework.util.StringUtils;
 
-import com.finances.personal.util.ErrorUtils;
+import com.finances.personal.error.ErrorUtils;
+import com.finances.personal.error.model.FieldErrorMessage;
 
 public class JournalEntry {
 	

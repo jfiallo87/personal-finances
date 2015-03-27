@@ -1,4 +1,4 @@
-package com.finances.personal.model;
+package com.finances.personal.error.model;
 
 public enum FieldErrorMessage {
 	

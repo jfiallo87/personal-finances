@@ -1,4 +1,4 @@
-package com.finances.personal.application;
+package com.finances.personal.application.model;
 
 import java.time.Month;
 import java.util.ArrayList;
@@ -6,10 +6,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.finances.personal.filter.model.JournalEntryFilter;
 import com.finances.personal.model.Category;
 import com.finances.personal.model.Date;
 import com.finances.personal.model.DateRange;
-import com.finances.personal.model.JournalEntryFilter;
 import com.finances.personal.model.MonetaryAmount;
 import com.finances.personal.model.MonetaryAmountRange;
 import com.finances.personal.model.MonetaryAmountType;

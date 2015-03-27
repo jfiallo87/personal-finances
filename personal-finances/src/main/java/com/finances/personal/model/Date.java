@@ -2,7 +2,7 @@ package com.finances.personal.model;
 
 import java.time.Month;
 
-import com.finances.personal.core.ValueObject;
+import com.finances.personal.core.model.ValueObject;
 
 public class Date extends ValueObject {
 	

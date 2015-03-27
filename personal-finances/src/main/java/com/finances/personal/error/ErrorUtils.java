@@ -1,6 +1,6 @@
-package com.finances.personal.util;
+package com.finances.personal.error;
 
-import com.finances.personal.model.FieldErrorMessage;
+import com.finances.personal.error.model.FieldErrorMessage;
 
 public class ErrorUtils {
 	
