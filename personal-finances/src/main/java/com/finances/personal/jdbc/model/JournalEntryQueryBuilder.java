@@ -1,4 +1,4 @@
-package com.finances.personal.jdbc;
+package com.finances.personal.jdbc.model;
 
 import java.time.Month;
 import java.util.ArrayList;
@@ -11,12 +11,17 @@ import org.springframework.util.NumberUtils;
 import org.springframework.util.StringUtils;
 
 import com.finances.personal.filter.model.JournalEntryFilter;
-import com.finances.personal.jdbc.model.JdbcQuery;
 import com.finances.personal.model.Category;
 import com.finances.personal.model.MonetaryAmount;
 import com.finances.personal.model.MonetaryAmountType;
 
-public abstract class AbstractJournalEntryQueryBuilder {
+public abstract class JournalEntryQueryBuilder {
+	
+	protected JournalEntryTable journalEntryTable;
+	
+	public JournalEntryQueryBuilder() {
+		journalEntryTable = JournalEntryTable.describe();
+	}
 	
 	public JdbcQuery buildQuery(JournalEntryFilter filter) {
 		List<Object> args = new ArrayList<Object>();

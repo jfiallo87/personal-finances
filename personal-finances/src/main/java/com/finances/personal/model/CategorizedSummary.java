@@ -3,9 +3,9 @@ package com.finances.personal.model;
 import java.util.Collections;
 import java.util.List;
 
-import com.finances.personal.core.model.ValueObject;
+import com.finances.personal.core.model.Lockable;
 
-public class CategorizedSummary extends ValueObject {
+public class CategorizedSummary extends Lockable {
 	
 	public static final String TOTALS = "totals";
 	public static final String CATEGORIZED_AMOUNTS = "categorizedAmounts";

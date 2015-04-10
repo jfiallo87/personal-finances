@@ -1,8 +1,8 @@
 package com.finances.personal.model;
 
-import com.finances.personal.core.model.ValueObject;
+import com.finances.personal.core.model.Lockable;
 
-public class MonetaryAmountTotals extends ValueObject {
+public class MonetaryAmountTotals extends Lockable {
 
 	public static final String CREDITS = "credits";
 	public static final String DEBITS = "debits";

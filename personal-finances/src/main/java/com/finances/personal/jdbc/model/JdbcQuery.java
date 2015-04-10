@@ -1,8 +1,8 @@
 package com.finances.personal.jdbc.model;
 
-import com.finances.personal.core.model.ValueObject;
+import com.finances.personal.core.model.Lockable;
 
-public class JdbcQuery extends ValueObject {
+public class JdbcQuery extends Lockable {
 	
 	private static final String SQL = "sql";
 	private static final String ARGS = "args";

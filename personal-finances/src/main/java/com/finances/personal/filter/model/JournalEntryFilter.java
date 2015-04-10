@@ -3,12 +3,12 @@ package com.finances.personal.filter.model;
 import java.util.Collections;
 import java.util.List;
 
-import com.finances.personal.core.model.ValueObject;
+import com.finances.personal.core.model.Lockable;
 import com.finances.personal.model.Category;
 import com.finances.personal.model.DateRange;
 import com.finances.personal.model.MonetaryAmountRange;
 
-public class JournalEntryFilter extends ValueObject {
+public class JournalEntryFilter extends Lockable {
 	
 	public static final String CATEGORIES = "categories";
 	public static final String AMOUNT_RANGE = "amountRange";

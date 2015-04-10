@@ -1,6 +1,8 @@
 package com.finances.personal.model;
 
-public class JournalEntryIdentifiableInfo extends JournalEntryInfo {
+import com.finances.personal.core.model.Identifiable;
+
+public class JournalEntryIdentifiableInfo extends JournalEntryInfo implements Identifiable {
 	
 	public static final String ID = "id";
 	

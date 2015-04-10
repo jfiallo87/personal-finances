@@ -2,9 +2,9 @@ package com.finances.personal.model;
 
 import java.time.Month;
 
-import com.finances.personal.core.model.ValueObject;
+import com.finances.personal.core.model.Lockable;
 
-public class Date extends ValueObject {
+public class Date extends Lockable {
 	
 	public static final String MONTH = "month";
 	public static final String DAY = "day";

@@ -1,8 +1,8 @@
 package com.finances.personal.model;
 
-import com.finances.personal.core.model.ValueObject;
+import com.finances.personal.core.model.Lockable;
 
-public class DateRange extends ValueObject {
+public class DateRange extends Lockable {
 	
 	public static final String FROM_DATE = "fromDate";
 	public static final String TO_DATE = "toDate";

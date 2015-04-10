@@ -1,4 +1,4 @@
-package com.finances.personal.jdbc;
+package com.finances.personal.jdbc.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

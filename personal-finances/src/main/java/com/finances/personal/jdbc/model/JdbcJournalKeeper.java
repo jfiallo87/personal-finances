@@ -1,5 +1,7 @@
 package com.finances.personal.jdbc.model;
 
+import static com.syntax.sql.jdbc.Statement.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -10,8 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import com.finances.personal.core.model.JournalKeeper;
 import com.finances.personal.filter.model.JournalEntryFilter;
-import com.finances.personal.jdbc.JournalEntryQueryBuilder;
-import com.finances.personal.jdbc.SummarizedJournalEntryQueryBuilder;
 import com.finances.personal.model.CategorizedMonetaryAmount;
 import com.finances.personal.model.JournalEntryIdentifiableInfo;
 
@@ -19,48 +19,58 @@ import com.finances.personal.model.JournalEntryIdentifiableInfo;
 public class JdbcJournalKeeper implements JournalKeeper {
 	
 	private final JdbcTemplate jdbcTemplate;
-	private final JournalEntryQueryBuilder journalEntryQueryBuilder;
+	private final DetailedJournalEntryQueryBuilder detailedJournalEntryQueryBuilder;
 	private final SummarizedJournalEntryQueryBuilder summarizedJournalEntryQueryBuilder;
 	private final RowMapper<JournalEntryIdentifiableInfo> journalEntryIdentifiableInfoRowMapper;
 	private final RowMapper<CategorizedMonetaryAmount> summarizedJournalEntryRowMapper;
 	
+	private final JournalEntryTable journalEntryTable;
+	
 	@Autowired
 	public JdbcJournalKeeper(JdbcTemplate jdbcTemplate,
-								 JournalEntryQueryBuilder journalEntryQueryBuilder,
+								 DetailedJournalEntryQueryBuilder detailedJournalEntryQueryBuilder,
 								 SummarizedJournalEntryQueryBuilder summarizedJournalEntryQueryBuilder,
 								 RowMapper<JournalEntryIdentifiableInfo> journalEntryIdentifiableInfoRowMapper,
 								 RowMapper<CategorizedMonetaryAmount> summarizedJournalEntryRowMapper) {
 		this.jdbcTemplate = jdbcTemplate;
-		this.journalEntryQueryBuilder = journalEntryQueryBuilder;
+		this.detailedJournalEntryQueryBuilder = detailedJournalEntryQueryBuilder;
 		this.summarizedJournalEntryQueryBuilder = summarizedJournalEntryQueryBuilder;
 		this.journalEntryIdentifiableInfoRowMapper = journalEntryIdentifiableInfoRowMapper;
 		this.summarizedJournalEntryRowMapper = summarizedJournalEntryRowMapper;
+		
+		journalEntryTable = JournalEntryTable.describe();
 	}
 	
 	@Override
 	public void insertEntry(JournalEntryIdentifiableInfo journalEntry, String createdBy) {
-		String sql = " INSERT INTO journal_entry "
-				   + " (id, "
-				   + " month, "
-				   + " day, "
-				   + " year, "
-				   + " category, "
-				   + " value, "
-				   + " type,"
-				   + " type_modifier,"
-				   + " created_by,"
-				   + " created_date) "
-				   + " VALUES "
-				   + " (?, "
-				   + "  ?, "
-				   + "  ?, "
-				   + "  ?, "
-				   + "  ?, "
-				   + "  ?, "
-				   + "  ?,"
-				   + "  ?,"
-				   + "  ?,"
-				   + "  ?) ";
+		String sql = newStmt()
+					.insert().into().table(journalEntryTable.tableName())
+					.op()
+					.field(journalEntryTable.id())
+					.asWellAs().field(journalEntryTable.month())
+					.asWellAs().field(journalEntryTable.day())
+					.asWellAs().field(journalEntryTable.year())
+					.asWellAs().field(journalEntryTable.category())
+					.asWellAs().field(journalEntryTable.value())
+					.asWellAs().field(journalEntryTable.type())
+					.asWellAs().field(journalEntryTable.typeModifier())
+					.asWellAs().field(journalEntryTable.createdBy())
+					.asWellAs().field(journalEntryTable.createdDate())
+					.cp()
+					.values()
+					.op()
+					.parameter()
+					.asWellAs().parameter()
+					.asWellAs().parameter()
+					.asWellAs().parameter()
+					.asWellAs().parameter()
+					.asWellAs().parameter()
+					.asWellAs().parameter()
+					.asWellAs().parameter()
+					.asWellAs().parameter()
+					.asWellAs().parameter()
+					.cp()
+					.toString();
 		
 		jdbcTemplate.update(sql, journalEntry.getId(),
 								 journalEntry.getDate().getMonth().getValue(),
@@ -76,8 +86,10 @@ public class JdbcJournalKeeper implements JournalKeeper {
 
 	@Override
 	public void deleteEntry(String id) {
-		String sql = " DELETE FROM journal_entry "
-				   + " where id = ? ";
+		String sql = newStmt()
+					.delete().from().table(journalEntryTable.tableName())
+					.where().field(journalEntryTable.id()).equal().parameter()
+					.toString();
 		
 		jdbcTemplate.update(sql, id);
 	}
@@ -85,7 +97,7 @@ public class JdbcJournalKeeper implements JournalKeeper {
 	@Override
 	public List<JournalEntryIdentifiableInfo> queryEntries(
 			JournalEntryFilter filter) {
-		JdbcQuery query = journalEntryQueryBuilder.buildQuery(filter);
+		JdbcQuery query = detailedJournalEntryQueryBuilder.buildQuery(filter);
 		
 		return jdbcTemplate.query(query.getSql(), journalEntryIdentifiableInfoRowMapper, query.getArgs());
 	}

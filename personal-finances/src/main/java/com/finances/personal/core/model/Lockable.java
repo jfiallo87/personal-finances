@@ -6,7 +6,7 @@ import java.util.Set;
 import com.finances.personal.error.ErrorUtils;
 import com.finances.personal.error.model.FieldErrorMessage;
 
-public abstract class ValueObject {
+public abstract class Lockable {
 	
 	private final Set<String> lockedFields = new HashSet<String>();
 	
